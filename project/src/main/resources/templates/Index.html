@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Management</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary" style="height:40px" >
+  <!-- Navbar content -->
+</nav>
+<br>
+
+<div align="center">
+  <h1>Survey Management</h1>
+  <a href="new">Add Survey</a>
+  <br/><br/>
+  <table border="1" cellpadding="10">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>StartDate</th>
+      <th>EndDate</th>
+      <th>Survey Description</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="survey : ${listSurveys}">
+      <td th:text="${survey.id}">ID</td>
+      <td th:text="${survey.surveyname}">SurveyName</td>
+      <td th:text="${survey.surveytype}">SurveyType</td>
+      <td th:text="${survey.startdate}">StartDate</td>
+      <td th:text="${survey.enddate}">EndDate</td>
+      <td th:text="${survey.surveydescription}">SurveyDescription</td>
+
+
+      <td>
+        <a th:href="@{'/edit/' + ${survey.id}}">Preview</a>
+        &nbsp;&nbsp;&nbsp;
+        <a  onclick="alert('Survey has been Published')">Publish</a>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
